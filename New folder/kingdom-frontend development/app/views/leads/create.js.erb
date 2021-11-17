@@ -1,0 +1,6 @@
+$(".notice").remove();
+
+<% @lead.errors.full_messages.each do |msg| %>
+console.log("hello")
+$("#helpBlock").append(`<div class=”notice”><%= escape_javascript(msg)%></div>`);
+<% end %>

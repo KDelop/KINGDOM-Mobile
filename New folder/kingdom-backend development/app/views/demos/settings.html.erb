@@ -1,0 +1,43 @@
+<%= link_to 'Back to Demos', demos_path %>
+
+<h2>Calendar Settings</h2>
+
+<%= simple_form_for current_user, url: user_path(current_user), method: :put do |f| %>
+  <h5>Personal Meeting Zoom Link</h5>
+  <%= f.input :zoom_link, label: false, input_html: { class: 'mb-2', type: 'url' }, required: true %>
+  <%= f.submit 'Save', class: 'mb-4' %>
+<% end %>
+
+<% if @availabilities.present? %>
+  <h5>Availabilities</h5>
+
+  <div class="row">
+    <div class="col-3">
+      <% @availabilities.each do |availability| %>
+        <div class="form-group">
+          <input type="text" name="" class="form-control" placeholder="<%= availability.duration %>" disabled>
+          <%= link_to availability, method: :delete, data: { confirm: 'Are you sure?', remote: true } do %>
+        <span class="cancel_icon">
+          close
+        </span>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
+<%= simple_form_for Availability.new do |f| %>
+  <h5>Standard Work Hours</h5>
+  <div class="row">
+    <div class="col-2">
+      <%= f.input :start_time, collection: select_time_drop_down_values, prompt: 'Select Start Time' %>
+    </div>
+    <div class="col-2">
+      <%= f.input :end_time, collection: select_time_drop_down_values, prompt: 'Select End Time' %>
+    </div>
+  </div>
+  <br>
+  <%= f.input :day_of_week, collection: Date::DAYNAMES, prompt: 'Select Work Day' %>
+  <%= f.submit 'Add' %>
+<% end %>

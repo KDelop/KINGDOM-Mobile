@@ -1,0 +1,60 @@
+<% if false %>
+  <section class="form_section">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-7">
+          <div class="white_box">
+            <div class="row justify-content-center">
+              <div class="col-12 col-md-11">
+                <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+                  <h4>Reset Password</h4>
+                  <%= render "devise/shared/error_messages", resource: resource %>
+                  <%= f.hidden_field :reset_password_token %>
+                  <div class="form-group">
+                    <%= f.password_field :password, autofocus: true, autocomplete: "new-password", class: 'form-control pswrd' , placeholder: 'New password', required: true %>
+                  </div>
+                  <div class="form-group">
+                    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control pswrd' , placeholder: 'New password again', required: true  %>
+                  </div>
+                  <%= f.hidden_field :reset_password_token %>
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="text-right">
+                        <%= f.submit "Next", class: 'btn_orange mt-1' %>
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+<% end %>
+
+<section class="form_section">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-12 col-md-4">
+				<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+					<h4>Create New Password</h4>
+          <%= f.hidden_field :reset_password_token %>
+					<div class="form-group">
+            <%= f.password_field :password, autofocus: true, autocomplete: "new-password", class: 'form-control pswrd' , placeholder: 'New password', required: true %>
+						<a href="#" class="input_icon"><%= image_tag("lock-icon.png", alt: "#") %></a>
+					</div>
+					<div class="form-group">
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control pswrd' , placeholder: 'Re-enter Password', required: true  %>
+						<a href="#" class="input_icon"><%= image_tag("lock-icon.png", alt: "#") %></a>
+					</div>
+					<a href="#" class="contact_support">Contact Support</a>
+					<div class="text-center">
+						<button type="submit" class="btn_red"><span>NEXT</span></button>
+					</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</section>

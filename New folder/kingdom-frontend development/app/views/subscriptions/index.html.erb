@@ -1,0 +1,18 @@
+
+<section class="form_section stripe_section">
+  <article>
+    <% if flash[:error].present? %>
+      <div id="error_explanation">
+        <p><%= flash[:error] %></p>
+      </div>
+    <%end%>
+  </article>
+  <div class="container">
+    <h4 class="get_started_text">Get Started</h4>
+    <div class="row">
+      <% Subscription.all.each do  |subscription| %>
+        <%= render partial: 'subscription', locals: {first_amount: 194.99, unit_amount: 174.99, subscription: subscription} %>
+      <% end %>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<%= link_to 'New Demo', new_demo_path %>
+<%= link_to 'Settings', demo_settings_path %>
+
+<br>
+<br>
+
+<div class="row">
+
+  <div class="col-2">
+    <% @next_four_days.each do |datetime, demos| %>
+      <% if demos.present? %>
+        <span><%= date_translation datetime %>:</span>
+        <br>
+        <% demos.each do |demo| %>
+          <div>
+            <%= link_to "Demo with #{demo.lead.first_name} #{demo.start_datetime.strftime('%l:%M %P')}", demo_path(demo), remote: true %>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="col-10">
+    <%= month_calendar(events: @demos, attribute: :start_datetime) do |date, demos| %>
+      <%= date.day %>
+
+      <% demos.each do |demo| %>
+        <div>
+          <%= link_to demo.duration, demo_path(demo), remote: true %>
+        </div>
+      <% end %>
+
+    <% end %>
+  </div>
+</div>
+
+<div id="demo-show"></div>

@@ -1,0 +1,12 @@
+default: &default
+  encoding: unicode
+  adapter: postgresql
+  port: 5432
+
+development:
+  <<: *default
+  <<: *default
+  database: kingdom_development
+  username: postgres
+  password: postgres
+  host: localhost

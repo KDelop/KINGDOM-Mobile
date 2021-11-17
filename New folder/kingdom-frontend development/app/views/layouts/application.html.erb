@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+  <%= render 'shared/head'%>
+  <body class="">
+    <section class="content-container home_bg <%= controller_name == 'demos' ? 'calendar_bg' : '' %> <%= controller_name == 'leads' ? 'add_bg' : '' %>">
+      <%= render 'shared/header'%>
+      <%#= notice %>
+      <%= yield %>
+    </section>
+  </body>
+</html>

@@ -1,0 +1,16 @@
+$("#leadModal").find(".modal-content").html("<%= j render 'leads/show' %>")
+$("#leadModal").show()
+$("#leadModal").addClass('show')
+$("#leadModal").addClass('fade')
+
+
+$('#modal-content-edit').html("<%= j render 'leads/edit' %>")
+initPhoneNumberLib();
+
+window.attachClickListenerToModalCloseButton = () => {
+  $("#leadModal .btn-close").click(function (event) {
+    $("#leadModal").toggle();
+  });
+};
+
+window.attachClickListenerToModalCloseButton()

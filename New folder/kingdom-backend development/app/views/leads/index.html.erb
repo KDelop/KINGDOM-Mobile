@@ -1,0 +1,71 @@
+<div>
+  <%= link_to "Add Leads", new_lead_path,{remote: true,'data-bs-toggle' => "modal", 'data-bs-target' => "#exampleModalToggleNew", class: 'btn btn-primary btn'} %>
+  <div class="modal fade" id="exampleModalToggleNew" aria-hidden="true" aria-labelledby="exampleModalToggleLabelNew" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalToggleLabel2">Import CSV</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <%= form_with url: leads_import_path, local: false  do |form|%>
+            <%= form.file_field :file %>
+            <%= submit_tag "Import" %>
+            <span id="something" class="help-block"></span>
+          <% end %>
+        </div>
+        <div class="modal-footer">
+          <%= link_to 'Finish', leads_path, class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <table>
+    <thead>
+    <tr>
+      <th>First name</th>
+      <th>Phone number</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @leads.each do |l| %>
+      <tr>
+        <td><%= l.first_name %></td>
+        <td><%= l.phone_number %></td>
+        <td>
+          <%= link_to "Edit", edit_lead_path(l.id), {remote: true, 'data-bs-toggle' => "modal", 'data-bs-target' => "#exampleModalToggle", class: 'btn btn-primary btn'}  %>
+
+          <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabelEdit" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+              </div>
+            </div>
+          </div>
+
+
+        </td>
+        <td>
+          <%= link_to "Delete", lead_path(l.id), class: 'btn btn-danger btn', method: :delete %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+
+  </table>
+
+</div>
+<!--<script>-->
+<!--  $("#exampleModalToggle").find(".modal-content").html("<%= j (render partial: 'leads/edit') %>")-->
+<!--  $("#exampleModalToggle").modal()-->
+<!--</script>-->
+
+
+
+

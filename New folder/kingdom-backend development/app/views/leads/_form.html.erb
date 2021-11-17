@@ -1,0 +1,42 @@
+<%= form_with(model: @lead, local: false) do |form| %>
+    <div class="flex flex-">
+      <div class="field">
+        <%= form.label :first_name %>
+        <%= form.text_field :first_name %>
+      </div>
+
+      <div class="field">
+        <%= form.label :phone_number %>
+        <%= form.text_field :phone_number %>
+      </div>
+
+    </div>
+    <div>
+      <div class="field">
+        <%= form.label :last_name %>
+        <%= form.text_field :last_name %>
+      </div>
+
+      <div class="field">
+        <%= form.label :facebook %>
+        <%= form.text_field :facebook %>
+      </div>
+
+      <div class="field">
+        <%= form.label :instagram %>
+        <%= form.text_field :instagram %>
+      </div>
+
+      <div class="field">
+        <%= form.label :linkedin %>
+        <%= form.text_field :linkedin %>
+      </div>
+    </div>
+
+
+
+      <%= form.submit %>
+
+  <span id="helpBlock" class="help-block"></span>
+
+<% end %>
